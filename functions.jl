@@ -11,6 +11,9 @@ function Newton(α::Int, β::Int, γ::Int, σ::Int, ρ::Int, ε::Int=10^-5, M::I
     try
       Hess = 1 #calculete hessian
       t = Hess+Matrix(Float64, I(size(Hess)))
+    catch
+      print("Error")
+    end
   end
 
 
