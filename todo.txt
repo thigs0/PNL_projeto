@@ -1,0 +1,6 @@
+1 - Implementar código da secante
+2 - Implementar código do gradiente
+3 - Testar código do gradiente
+4 - testar código da secante
+5 - Testar código do Newton
+6 - organizar todos os testes em um arquivo de teste
