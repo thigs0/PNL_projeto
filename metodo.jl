@@ -12,7 +12,7 @@ H0=I
 M=100
 =#
 
-function Gradiente(x::Vector{Float64}, f::Function, α::Float64=1e-4, σ::Float64=0.5, ε::Float64=1e-5, M::Int=100)
+function Gradiente(x::Vector{Float64}, f::Function; α::Float64=1e-4, σ::Float64=0.5, ε::Float64=1e-5, M::Int=100)
   #=
   #
   =#
@@ -38,7 +38,7 @@ function Gradiente(x::Vector{Float64}, f::Function, α::Float64=1e-4, σ::Float6
 end
 
 
-function Newton(x::Vector{Float64}, f::Function, α::Float64=1e-4, β::Float64=1e-3, γ::Float64=1e-6, σ::Float64=0.5, ρ::Float64=1e-3, ε::Float64=1e-5, M::Int=100)
+function Newton(x::Vector{Float64}, f::Function; α::Float64=1e-4, β::Float64=1e-3, γ::Float64=1e-6, σ::Float64=0.5, ρ::Float64=1e-3, ε::Float64=1e-5, M::Int=100)
   #=
   #
   =#
@@ -84,7 +84,7 @@ function Newton(x::Vector{Float64}, f::Function, α::Float64=1e-4, β::Float64=1
 end
 
 
-function CP1(x::Vector, f::Function, H::Matrix{Float64}=Matrix(1.0I, length(x), length(x)), α::Float64=1e-4, β::Float64=1e-3, γ::Float64=1e-6, σ::Float64=0.5, ε::Float64=1e-5, M::Int=100)
+function CP1(x::Vector, f::Function; H::Matrix{Float64}=Matrix(1.0I, length(x), length(x)), α::Float64=1e-4, β::Float64=1e-3, γ::Float64=1e-6, σ::Float64=0.5, ε::Float64=1e-5, M::Int=100)
   #=
   #
   =#
@@ -133,7 +133,7 @@ function CP1(x::Vector, f::Function, H::Matrix{Float64}=Matrix(1.0I, length(x), 
   return x
 end
 
-function DFP(x::Vector, f::Function, H::Matrix{Float64}=Matrix(1.0I, length(x), length(x)), α::Float64=1e-4, β::Float64=1e-3, γ::Float64=1e-6, σ::Float64=0.5, ε::Float64=1e-5, M::Int=100)
+function DFP(x::Vector, f::Function; H::Matrix{Float64}=Matrix(1.0I, length(x), length(x)), α::Float64=1e-4, β::Float64=1e-3, γ::Float64=1e-6, σ::Float64=0.5, ε::Float64=1e-5, M::Int=100)
   #=
   #
   =#
