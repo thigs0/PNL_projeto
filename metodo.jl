@@ -180,3 +180,4 @@ function DFP(x::Vector, f::Function; H::Matrix{Float64}=Matrix(1.0I, length(x), 
 
   return x
 end
+
