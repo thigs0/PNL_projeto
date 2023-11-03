@@ -12,7 +12,7 @@ function quadratica(x::Vector{Float64})
   return r
 end
 
-function quadratica(x::Vector{Float64})
+function Rosenbrock(x::Vector{Float64})
 #= Constroi a função de Rosenbrock para um dado vetor
   #
 # Sabemos que o mínimo global é x* =[1 , 1, 1, ..., 1]
@@ -21,7 +21,7 @@ function quadratica(x::Vector{Float64})
     error("O vetor fornecido não é par")
   end
   r = 0.0
-  for i in length(x)
+  for i in 1:(Int(length(x)/2))
     r += 10*(x[2*i]-x[2*i-1]^2)^2
     r += (x[2*i-1] - 1)^2
   end
@@ -34,7 +34,7 @@ function Styblinsky_Tang(x::Vector{Float64})
 # Sabemos que o mínimo global é x* = [-2.9035, -2.9035,...,-2.9035]
 =#
   f = 0.0
-  for i in 1:lenght(x)
+  for i in 1:length(x)
     f += x[i]^4 - 16*x[i]^2 + 5*x[i]
   end
   return f 
@@ -52,15 +52,19 @@ function Rastrigin(x::Vector{Float64})
   return f
 end
 
-function plot_iter(X::Vector,Y::Vector, z::Matrix, f::function)
+function plot_iter(f::Function; x=range(-10, 10, 100), y=(range(-10, 10, 100)), z::Matrix=rand(5,2)*10)
   #x e y são os vetores com os pontos para construir o gráfico
   #z é uma matriz em que suas colunas são as coodenadas x e y dos pontos 
   #f é a função que originou os pontos
 
-  x = range(-10, 10, 100); #Coordenadas
-  y = range(-10, 10, 100); #Coordenadas
-  z = rand(5,2)*10
-  g = contour(x, y, quadratica, clabels=false)
+  w = ones(length(y), length(x))
+  for i in 1:length(y)
+    for j in 1:length(x)
+      w[i,j] = f([x[j], y[i]])
+    end
+  end
+
+  g = contour(x, y, w, clabels=false)
 
   plot!(g, [z[1, 1]], [z[1, 2]], seriestype=:scatter, c=:blue, legend=false)
   for i in 2:size(z)[1]
@@ -70,3 +74,7 @@ function plot_iter(X::Vector,Y::Vector, z::Matrix, f::function)
   plot!(g, [z[end, 1]], [z[end, 2]], seriestype=:scatter, c=:blue, legend=false)
   return g
 end
+
+
+#z = matriz de n linhas e 2 colunas
+#1a coluna eh posicao x, segunda y, do ponto a ser plotado
