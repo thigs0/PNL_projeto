@@ -1,3 +1,5 @@
+using Random
+Random.seed!(3)
 function quadratica(x::Vector{Float64})
   #= Constroi o valor da função quadratica para um dado vetor
   #
@@ -76,8 +78,12 @@ function plot_iter(f::Function; x=range(-10, 10, 100), y=(range(-10, 10, 100)), 
 end
 
 function testarN(f::Function, Metodo::Function; n::Int=500, N::Int=30)
-  #Teste a função f
-  #otimizada com método Metodo
+  #=Teste a função f otimizada com método Metodo
+  n::Int é a quantidade limite de iterações
+  N::Int é o tamanho do vetor x que queremos
+  return: (p, y[n]) em que p é o gráfico e o valor da função para cada iteração
+  =#
+  # começa o algoritmo
   tempo = ones(n)
   x = rand(N)
   y = ones(n)
@@ -87,23 +93,24 @@ function testarN(f::Function, Metodo::Function; n::Int=500, N::Int=30)
     tempo[i] = time()-start
   end
   p = scatter(1:n, tempo);
-  println("A solução obtida pelo método $Metodo para função quadrática é:")
-  print(Metodo(x, f, M=n))
-
+  #println("A solução obtida pelo método $Metodo para função quadrática é:")
+  #print(Metodo(x, f, M=n))
   return (p, y[n])
 end 
 
 function caminho(f::Function, Metodo::Function; n::Int=10, x::Vector{Float64}=rand(2))
-#Desenha os n primeiros pontos
-z = ones(n+1, 2)
-z[1,:] = x
-for i in 1:n
-  z[i+1,:] = Metodo(x, f, M=i)
-end
+  #=Desenha os n pontos de iteração de forma vetorial
+  n::Int é a quantidade de pontos que queremos representados
+  =#
+  z = ones(n+1, 2)
+  z[1,:] = x
+  for i in 1:n
+    z[i+1,:] = Metodo(x, f, M=i)
+  end
 
-eixo_x = Vector(range(minimum(z[:,1])-2, maximum(z[:,1])+2, 100))
-eixo_y = Vector(range(minimum(z[:,2])-2, maximum(z[:,1])+2, 100))
-p = plot_iter(f, x=eixo_x, y=eixo_y, z=z)
+  eixo_x = Vector(range(minimum(z[:,1])-2, maximum(z[:,1])+2, 100))
+  eixo_y = Vector(range(minimum(z[:,2])-2, maximum(z[:,1])+2, 100))
+  p = plot_iter(f, x=eixo_x, y=eixo_y, z=z)
 
-return p
+  return p
 end 
