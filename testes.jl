@@ -34,21 +34,81 @@ Random.seed!(3)
 
 
 # Newton
-## quadratica
-## Rosenbrock
-## Styblinsky_Tang
-## Rastrigin
+ ## quadratica
+  x0 = Vector([172.0; -61])
+  (p, y) = testarN(quadratica, Newton, n=500, N=100)
+  savefig(p, "./fig/testesGradienteQuadratica.png")
+  c = caminho(quadratica, Newton, n=3, x=x0)
+  savefig(c, "./fig/caminhoGradienteQuadratica.png")
+
+  ## Rosenbrock
+  (p, y) = testarN(Rosenbrock, Newton, n=500, N=100)
+  savefig(p, "./fig/testesGradienteRosenbrock.png")
+  c = caminho(Rosenbrock, Newton, n=3, x=x0)
+  savefig(c, "./fig/caminhoGradienteRosenbrock.png")
+  ## Styblinsky_Tang
+  (p, y) = testarN(Styblinsky_Tang, Newton, n=500, N=100)
+  savefig(p, "./fig/testesGradienteStyblinsky_tang.png")
+  c = caminho(Styblinsky_Tang, Newton, n=3, x=x0)
+  savefig(c, "./fig/caminhoGradienteStyblinsky_Tang.png")
+
+  ## Rastrigin
+  (p, y) = testarN(Rastrigin, Newton, n=500, N=100)
+  savefig(p, "./fig/testesGradienteRastrigin.png")
+  c = caminho(Rastrigin, Newton, n=3, x=x0)
+  savefig(c, "./fig/caminhoGradienteRastrigin.png")
+
 
 
 # CP1
-## quadratica
-## Rosenbrock
-## Styblinsky_Tang
-## Rastrigin
+ ## quadratica
+ x0 = Vector([172.0; -61])
+ (p, y) = testarN(quadratica, CP1, n=500, N=100)
+ savefig(p, "./fig/testesGradienteQuadratica.png")
+ c = caminho(quadratica, CP1, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteQuadratica.png")
+
+ ## Rosenbrock
+ (p, y) = testarN(Rosenbrock, CP1, n=500, N=100)
+ savefig(p, "./fig/testesGradienteRosenbrock.png")
+ c = caminho(Rosenbrock, CP1, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteRosenbrock.png")
+ ## Styblinsky_Tang
+ (p, y) = testarN(Styblinsky_Tang, CP1, n=500, N=100)
+ savefig(p, "./fig/testesGradienteStyblinsky_tang.png")
+ c = caminho(Styblinsky_Tang, CP1, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteStyblinsky_Tang.png")
+
+ ## Rastrigin
+ (p, y) = testarN(Rastrigin, CP1, n=500, N=100)
+ savefig(p, "./fig/testesGradienteRastrigin.png")
+ c = caminho(Rastrigin, CP1, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteRastrigin.png")
+
 
 
 # DFP
-## quadratica
-## Rosenbrock
-## Styblinsky_Tang
-## Rastrigin
+ ## quadratica
+ x0 = Vector([172.0; -61])
+ (p, y) = testarN(quadratica, DFP, n=500, N=100)
+ savefig(p, "./fig/testesGradienteQuadratica.png")
+ c = caminho(quadratica, DFP, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteQuadratica.png")
+
+ ## Rosenbrock
+ (p, y) = testarN(Rosenbrock, DFP, n=500, N=100)
+ savefig(p, "./fig/testesGradienteRosenbrock.png")
+ c = caminho(Rosenbrock, DFP, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteRosenbrock.png")
+ ## Styblinsky_Tang
+ (p, y) = testarN(Styblinsky_Tang, DFP, n=500, N=100)
+ savefig(p, "./fig/testesGradienteStyblinsky_tang.png")
+ c = caminho(Styblinsky_Tang, DFP, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteStyblinsky_Tang.png")
+
+ ## Rastrigin
+ (p, y) = testarN(Rastrigin, DFP, n=500, N=100)
+ savefig(p, "./fig/testesGradienteRastrigin.png")
+ c = caminho(Rastrigin, DFP, n=3, x=x0)
+ savefig(c, "./fig/caminhoGradienteRastrigin.png")
+
