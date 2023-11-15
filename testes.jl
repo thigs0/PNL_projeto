@@ -7,7 +7,7 @@ using Random
 
 Random.seed!(3)
 
-# Gradiente
+#Gradiente
   ## quadratica
   x0 = Vector([172.0; -61])
   (p, y) = testarN(quadratica, Gradiente, n=500, N=100)
@@ -33,82 +33,80 @@ Random.seed!(3)
   savefig(c, "./fig/caminhoGradienteRastrigin.png")
 
 
-# Newton
+#Newton
  ## quadratica
   x0 = Vector([172.0; -61])
   (p, y) = testarN(quadratica, Newton, n=500, N=100)
-  savefig(p, "./fig/testesGradienteQuadratica.png")
+  savefig(p, "./fig/testesNewtonQuadratica.png")
   c = caminho(quadratica, Newton, n=3, x=x0)
-  savefig(c, "./fig/caminhoGradienteQuadratica.png")
+  savefig(c, "./fig/caminhoNewtonQuadratica.png")
 
   ## Rosenbrock
   (p, y) = testarN(Rosenbrock, Newton, n=500, N=100)
-  savefig(p, "./fig/testesGradienteRosenbrock.png")
+  savefig(p, "./fig/testesNewtonRosenbrock.png")
   c = caminho(Rosenbrock, Newton, n=3, x=x0)
-  savefig(c, "./fig/caminhoGradienteRosenbrock.png")
+  savefig(c, "./fig/caminhoNewtonRosenbrock.png")
   ## Styblinsky_Tang
   (p, y) = testarN(Styblinsky_Tang, Newton, n=500, N=100)
-  savefig(p, "./fig/testesGradienteStyblinsky_tang.png")
+  savefig(p, "./fig/testesNewtonStyblinsky_tang.png")
   c = caminho(Styblinsky_Tang, Newton, n=3, x=x0)
-  savefig(c, "./fig/caminhoGradienteStyblinsky_Tang.png")
+  savefig(c, "./fig/caminhoNewtonStyblinsky_Tang.png")
 
   ## Rastrigin
   (p, y) = testarN(Rastrigin, Newton, n=500, N=100)
-  savefig(p, "./fig/testesGradienteRastrigin.png")
+  savefig(p, "./fig/testesNewtonRastrigin.png")
   c = caminho(Rastrigin, Newton, n=3, x=x0)
-  savefig(c, "./fig/caminhoGradienteRastrigin.png")
+  savefig(c, "./fig/caminhonewtonRastrigin.png")
 
-
-
-# CP1
+#CP1
  ## quadratica
  x0 = Vector([172.0; -61])
  (p, y) = testarN(quadratica, CP1, n=500, N=100)
- savefig(p, "./fig/testesGradienteQuadratica.png")
+ savefig(p, "./fig/testesCP1Quadratica.png")
  c = caminho(quadratica, CP1, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteQuadratica.png")
+ savefig(c, "./fig/caminhoCP1Quadratica.png")
 
  ## Rosenbrock
  (p, y) = testarN(Rosenbrock, CP1, n=500, N=100)
- savefig(p, "./fig/testesGradienteRosenbrock.png")
+ savefig(p, "./fig/testesCP1Rosenbrock.png")
  c = caminho(Rosenbrock, CP1, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteRosenbrock.png")
+ savefig(c, "./fig/caminhoCP1Rosenbrock.png")
  ## Styblinsky_Tang
  (p, y) = testarN(Styblinsky_Tang, CP1, n=500, N=100)
- savefig(p, "./fig/testesGradienteStyblinsky_tang.png")
+ savefig(p, "./fig/testesCP1Styblinsky_tang.png")
  c = caminho(Styblinsky_Tang, CP1, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteStyblinsky_Tang.png")
+ savefig(c, "./fig/caminhoCP1Styblinsky_Tang.png")
 
  ## Rastrigin
  (p, y) = testarN(Rastrigin, CP1, n=500, N=100)
- savefig(p, "./fig/testesGradienteRastrigin.png")
+ savefig(p, "./fig/testesCP1Rastrigin.png")
  c = caminho(Rastrigin, CP1, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteRastrigin.png")
+ savefig(c, "./fig/caminhoCP1Rastrigin.png")
 
 
 
-# DFP
+#DFP
  ## quadratica
  x0 = Vector([172.0; -61])
  (p, y) = testarN(quadratica, DFP, n=500, N=100)
- savefig(p, "./fig/testesGradienteQuadratica.png")
+ savefig(p, "./fig/testesDFPQuadratica.png")
  c = caminho(quadratica, DFP, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteQuadratica.png")
+ savefig(c, "./fig/caminhoDFPQuadratica.png")
 
  ## Rosenbrock
  (p, y) = testarN(Rosenbrock, DFP, n=500, N=100)
- savefig(p, "./fig/testesGradienteRosenbrock.png")
+ savefig(p, "./fig/testesDFPRosenbrock.png")
  c = caminho(Rosenbrock, DFP, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteRosenbrock.png")
+ savefig(c, "./fig/caminhoDFPRosenbrock.png")
  ## Styblinsky_Tang
  (p, y) = testarN(Styblinsky_Tang, DFP, n=500, N=100)
- savefig(p, "./fig/testesGradienteStyblinsky_tang.png")
+ savefig(p, "./fig/testesDFPStyblinsky_tang.png")
  c = caminho(Styblinsky_Tang, DFP, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteStyblinsky_Tang.png")
+ savefig(c, "./fig/caminhoDFPStyblinsky_Tang.png")
 
  ## Rastrigin
  (p, y) = testarN(Rastrigin, DFP, n=500, N=100)
- savefig(p, "./fig/testesGradienteRastrigin.png")
+ savefig(p, "./fig/testesDFPRastrigin.png")
  c = caminho(Rastrigin, DFP, n=3, x=x0)
- savefig(c, "./fig/caminhoGradienteRastrigin.png")
+ savefig(c, "./fig/caminhoDFPRastrigin.png")
 
