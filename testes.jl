@@ -9,7 +9,7 @@ Random.seed!(3)
 
 #Gradiente
   ## quadratica
-  epson = Vector([1; 1])
+  epson = Vector([1e-1; 1e-1])
 
   x0 = [0, 0] + epson
   (p, y) = testarN(quadratica, Gradiente, n=500, N=100)
