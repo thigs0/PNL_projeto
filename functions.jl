@@ -30,6 +30,39 @@ function Rosenbrock(x::Vector{Float64})
   return r;
 end
 
+function quadratica!(x::Vector{Float64})
+  #= Constroi o valor da função quadratica para um dado vetor
+  #
+#Sabemos que o mínimo global é x* = [0,0,0,...,0]
+  # Retorna a função e o vetor gardiente dela
+  =#  
+  g = copy(x)*2
+  x = x.^2
+  f = 0.0
+  for i in 1:length(x)
+    f += i*x[i];
+    g[i] *= 2*i
+  end
+  return f, g
+end
+
+function Rosenbrock(x::Vector{Float64})
+#= Constroi a função de Rosenbrock para um dado vetor
+  #
+# Sabemos que o mínimo global é x* =[1 , 1, 1, ..., 1]
+  Return: valor da função de Rosenbrock em no vetor x         =# 
+  if !iseven(length(x))
+    error("O vetor fornecido não é par")
+  end
+  r = 0.0
+  for i in 1:(Int(length(x)/2))
+    r += 10*(x[2*i]-x[2*i-1]^2)^2
+    r += (x[2*i-1] - 1)^2
+  end
+  return r;
+end
+
+
 function Styblinsky_Tang(x::Vector{Float64})
   #= Calcula a função de Stynblinsky-tang para o vetor x
 #
