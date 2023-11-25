@@ -116,9 +116,9 @@ function testarN(f::Function, Metodo::Function; n::Int=500, N::Int=30)
   N::Int é o tamanho do vetor x que queremos
   return: (p, y[n]) em que p é o gráfico e o valor da função para cada iteração
   =#
-  # começa o algoritmo
-  tempo = ones(n)
-  x = rand(N)
+  # Imagem  fixa epsilon, n varia 
+  tempo = ones(n) #vetor do tempo gasto
+  x = rand(N) # vetor aleatório de x
   y = ones(n)
   for i in 1:n
     start = time()
@@ -126,10 +126,53 @@ function testarN(f::Function, Metodo::Function; n::Int=500, N::Int=30)
     tempo[i] = time()-start
   end
   p = scatter(1:n, tempo);
-  #println("A solução obtida pelo método $Metodo para função quadrática é:")
-  #print(Metodo(x, f, M=n))
+  xlabel!("Dimensão de x")
+  ylabel!("Tempo (s)")
   return (p, y[n])
 end 
+
+function testarε(f::Function, Metodo::Function, n::Int, N::Int=30)
+  #=Teste a função f otimizada com método Metodo
+  n::Int é a quantidade limite de iterações
+  N::Int é o tamanho do vetor x que queremos
+  return: (p, y[n]) em que p é o gráfico e o valor da função para cada iteração
+  =#
+  # Imagem  fixa epsilon, n varia 
+  tempo = ones(n) #vetor da norma
+  x = rand(N) # vetores aleatórios de x
+  y = ones(n)
+  for i in 1:N
+    y[i] = f(Metodo(x, f, M=i))
+    tempo[i] = abs(y[i]-0)# o mínimo da quadrática é 0
+  end
+  p = scatter(1:n, tempo);
+  xlabel!("Dimensão de x")
+  ylabel!("módulo da função no x")
+  return (p, y)
+end 
+
+function testar_graph(f::Function, Metodo::Function,  M, n::Int=100)
+  #=Teste a função f otimizada com método Metodo
+  n::Int é a quantidade limite de iterações
+  N::Int é o tamanho do vetor x que queremos
+  return: (p, y[n]) em que p é o gráfico e o valor da função para cada iteração
+  =#
+  # Imagem  fixa epsilon, n varia 
+  xf = ones(length(M)) # vetores aleatórios de x
+  yf = ones(length(M))
+  wf = ones(length(M))
+  for i in 1:length(M)
+    x = Vector([xf[i], yf[i]])
+    start = time()
+    yf[i] = ceil(1e+6f(Metodo(x, f, M=n)))
+    wf[i] = time()-start
+  end
+  p = scatter(xf, yf, zcolor=wf, label="");
+  xlabel!("Dimensão de x")
+  ylabel!("Tempo (s)")
+  return (p, yf)
+end 
+
 
 function caminho(f::Function, Metodo::Function; n::Int=10, x::Vector{Float64}=rand(2))
   #=Desenha os n pontos de iteração de forma vetorial
@@ -144,6 +187,8 @@ function caminho(f::Function, Metodo::Function; n::Int=10, x::Vector{Float64}=ra
   eixo_x = Vector(range(minimum(z[:,1])-2, maximum(z[:,1])+2, 100))
   eixo_y = Vector(range(minimum(z[:,2])-2, maximum(z[:,1])+2, 100))
   p = plot_iter(f, x=eixo_x, y=eixo_y, z=z)
+  xlabel!("Eixo x")
+  ylabel!("Eixo y")
 
   return p
 end 
